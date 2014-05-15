@@ -1,0 +1,25 @@
+<h1>This is country detail form</h1>
+{%if current_country %}
+	<h1>have country</h1>
+{% endif %}
+<table>
+	<form action="{% url 'polls:update_country' current_country.id %}" method = "POST">
+		{% csrf_token %}
+		<tr>
+			<td>name:</td>
+			<td><input type='text' name="country_name" value={{current_country.name}}></td>
+		</tr>
+		<tr>
+			<td>language:</td>
+			<td><input type='text' name="country_language" value={{current_country.language}}></td>
+		</tr>
+		<tr>
+			<td>state number:</td>
+			<td><input type='text' name="country_state_number" value= {{current_country.state_number}}></td>
+		</tr>
+		<tr>
+			<td><button type="submit">update country</button></td>
+			<td><a href="{% url 'polls:delete_country' current_country.id %}">Delete</a></td>
+		</tr>
+	</form>
+</table>

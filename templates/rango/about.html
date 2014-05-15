@@ -1,0 +1,19 @@
+{% extends 'rango/base.html' %}
+{% load static %}
+
+
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/rango.css' %}">
+	{% block title_block %}About{% endblock %}
+</head>
+
+<body>
+	<div class="hero-unit">
+		{% block body_block %} 
+			<h1>Author: Diep Bao Thinh {{user}}</h1>
+			<a href="{% url 'rango:index' %}">Go to Main page</a></br>
+			<img src="{% static 'img/bg.png' %}">
+		{% endblock %}
+	</div>
+	
+</body>

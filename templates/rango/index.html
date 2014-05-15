@@ -1,0 +1,33 @@
+{% extends 'rango/base.html' %}
+{% load static %}
+{% load rango_filters %}
+{% load rango_templatetags %}\
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/rango.css' %}">
+	{% block title_block %}Home{% endblock %}
+</head>
+
+<body background='/rango/{{ SETTINGS.abcdef }}images/bg.png'>
+	{% block body_block %} 
+		<h1> {{ MEDIA_ROOT }} -- {{LANGUAGE_CODE}} -- {{TIME_ZONE}} -- {{abcdef}}</h1>
+		{% hello "diepbao" %}
+		{% gb "GL" %}
+		{% show_credit %}
+
+		{% if user.is_authenticated %}
+			<h1> Hello {{ user.username }}, welcome to the team </h1>
+		{% else %}
+			<h1> Welcome guest </h1>
+		{% endif %}
+		<h1> {{ bold_message }} </h1>
+		{% if categories %}
+			<ul>
+				{% for category in categories %}
+					<li><a href="{% url 'rango:category' category.name %}">{{category.name | upper}}</a></li>
+				{% endfor %}
+			</ul>
+		{%else%}
+			<strong>There are no categories available</strong>
+		{% endif %}
+	{% endblock %}
+</body>

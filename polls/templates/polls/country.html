@@ -1,0 +1,34 @@
+
+<h1>This is country form</h1>
+{% if message %}
+	<h1>{{message}}</h1>
+
+{% endif %}
+<h2>
+
+	{% for person in persons %}
+		{{person.name}}
+	{% endfor %}
+</h2>
+<table>
+	<form action="{% url 'polls:create_country' %}" method = "POST">
+		{% csrf_token %}
+		<tr>
+			<td>name:</td>
+			<td><input type='text' name="country_name"></td>
+		</tr>
+		<tr>
+			<td>language:</td>
+			<td><input type='text' name="country_language"></td>
+		</tr>
+		<tr>
+			<td>state number:</td>
+			<td><input type='text' name="country_state_number"></td>
+		</tr>
+		<tr>
+			<td><button type="submit">create country</button></td>
+			<td></td>
+		</tr>
+	</form>
+	<a href="{% url 'polls:list_country'%}">View list of counties</a>
+</table>

@@ -1,0 +1,13 @@
+<form  action="{% url 'polls:search_country_by_name' %}" method="POST">
+	{% csrf_token %}
+	<input  type="text" name="search_param">
+	<br>
+	<button type="submit">Search by Name</button>
+</form>
+
+{% for ct in list_country %}
+	<a href="{% url 'polls:country_detail' ct.id %}">{{ct.name}}</a>
+	<br>
+	
+{% endfor %}
+<a href="{% url 'polls:country' %}">Create country</a>

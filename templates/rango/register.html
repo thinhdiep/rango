@@ -1,0 +1,29 @@
+{% extends 'rango/base.html' %}
+{% load static %}
+<html>
+	<head>
+		{% block title_block %}<title>Register</title>{% endblock %}
+	</head>
+	<body>
+		{% block body_block %}
+			aaaaa<span class="glyphicon glyphicon-search"></span>
+			<div class="hero-unit">
+				<div class="container">
+					{% if registed %}
+						<strong>Thank you for registed</strong>
+						<a href="{% url 'rango:index' %}">Return to home page</a></br>
+					{% else %}
+					<h1>Register</h1>
+					<form class="form-signin span8"id="register_form" action="{% url 'rango:register' %}" method="POST" enctype="multipart/form-data">
+						<h2 class="form-signin-heading">Sign up Here</h2>	
+						{% csrf_token %} 
+						{{user_form.as_p}}
+						{{user_profile_form.as_p}}
+						<input class="btn btn-primary" type="submit" name="submit" value="Register"/>
+					</form>
+				</div>
+			</div>
+			{% endif%}
+		{% endblock %}
+	</body>
+</html>
